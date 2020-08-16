@@ -1,0 +1,21 @@
+form{
+    padding: 30px;
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid lightgreen;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid tomato;
+}
+
+.error {
+    color: tomato;
+}
+
+select{
+    width: auto;
+    margin-bottom: 10px;
+}
+

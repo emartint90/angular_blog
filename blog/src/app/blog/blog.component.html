@@ -1,0 +1,43 @@
+<div class="card-group">
+
+    <div class="card">
+        <img [src]="imagen" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" {{titulo}}></h5>
+            <p class="card-text" {{texto}}>Texto</p>
+            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
+            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <img [src]="posts.imagen" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" {{titulo}}></h5>
+            <p class="card-text" {{texto}}>Texto</p>
+            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
+            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img [src]="imagen" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" {{titulo}}></h5>
+            <p class="card-text" {{texto}}>Texto</p>
+            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
+            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
+        </div>
+    </div>
+
+    <div class="filtrar">
+        <select>
+            <option value="todos">Todos</option>
+            <option *ngFor="let categoria of getByCategoria()" [value]="categoria">
+                {{categoria}}
+            </option>
+        </select>
+    </div>
+
+    <!-- (change)="onChange($event)" -->

@@ -1,0 +1,57 @@
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-group">
+            <label>Título</label>
+            <input type="text" class="form-control" formControlName="titulo">
+        </div>
+
+        <div class="form-group">
+            <label>Texto</label>
+            <input type="text" class="form-control" formControlName="texto">
+        </div>
+
+        <div class="form-group">
+            <label>Autor</label>
+            <input type="text" class="form-control" formControlName="autor">
+        </div>
+
+        <div class="form-group">
+            <label>Imagen</label>
+            <input src="" class="form-control" formControlName="imagen">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="date">Fecha</label>
+            <input class="form-control" formControlName="fecha" id="date" name="date" placeholder="MM/DD/YYY"
+                type="text" />
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+            <input type="text" class="form-control" formControlName="categoria">
+        </div>
+
+        <input type="submit" value="Enviar" class="btn btn-block btn-info">
+
+    </form>
+    <!-- <select class="custom-select">
+        <option selected>Categoria</option>
+        <option value="1">Noticias</option>
+        <option value="2">Articulos</option>
+        <option value="3">Opiniones</option>
+    </select> -->
+
+</div>
+
+<!-- {{ formulario.value | json }} -->
+
+
+<!-- Realizamos un formulario básico con clases de Bootstrap -->
+<!-- Necesitamos darle un evento al boton para accionar, por ello creamos el evento ngSubmit. Tiene que ser definido en el Ts -->
+<!-- Definir el formulario con FormGroup para: es necesario importarlo en app.module -->
+<!-- Como hemos hecho en la creacion de las rutas, hay que definir el objeto que en este caso lo llamamos formulario y ponerle como una accion de Angular, que en este caso utilizamos FormGroup y asi poder tambien poner validators, recordar que el template no sirve. -->
+<!-- me da error: 'importar No provider for ControlContainerng
+Can't bind to 'formGroup' since it isn't a known property of 'form''' y es porque me falta:import ReactiveFormsModule from @angular/forms en APP.MODULE.TS -->
+<!-- Me seguia dando error, y aparte de importarlo en app.module tb en el ts del formulario, tendrá toda la logica pero no sé explicarlo -->
+<!-- creamos formcontrolName para poder utilizarlo en el ts, capturar el elemento html en el ts, se escribe en el input!!-->
