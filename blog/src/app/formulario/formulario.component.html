@@ -4,54 +4,60 @@
         <div class="form-group">
             <label>Título</label>
             <input type="text" class="form-control" formControlName="titulo">
+            <p class="error" *ngIf="formulario.controls.titulo.errors && formulario.controls.titulo.touched">
+                El campo título es requerido
+            </p>
         </div>
 
         <div class="form-group">
             <label>Texto</label>
             <input type="text" class="form-control" formControlName="texto">
+            <p class="error"
+                *ngIf="formulario.controls.texto.errors && formulario.controls.texto.pristine && formulario.controls.titulo.touched">
+                Introduzca un texto max 1000 caracteres
+            </p>
         </div>
 
         <div class="form-group">
             <label>Autor</label>
             <input type="text" class="form-control" formControlName="autor">
+            <p class="error" *ngIf="formulario.controls.autor.errors && formulario.controls.autor.touched">
+                Introduzca un autor
+            </p>
         </div>
 
         <div class="form-group">
             <label>Imagen</label>
             <input src="" class="form-control" formControlName="imagen">
+            <p class="error" *ngIf="formulario.controls.imagen.errors && formulario.controls.imagen.touched">
+                Introduzca la Url de la imagen
+            </p>
         </div>
 
         <div class="form-group">
             <label class="control-label" for="date">Fecha</label>
             <input class="form-control" formControlName="fecha" id="date" name="date" placeholder="MM/DD/YYY"
                 type="text" />
+            <p class="error" *ngIf="formulario.controls.fecha.errors && formulario.controls.fecha.touched">
+                Seleccione una fecha
+            </p>
         </div>
 
         <div class="form-group">
-            <label>Categoría</label>
-            <input type="text" class="form-control" formControlName="categoria">
+            <label class="control-label">Categoría</label>
+            <select class="form-control" formControlName="categoria">
+                <option value="categoria" *ngFor="let categoria of arrayCategorias">
+                    {{categoria}}</option>
+                <p class="error" *ngIf="formulario.controls.categoria.errors && formulario.controls.categoria.touched">
+                    Seleccione una categoría
+                </p>
+            </select>
         </div>
 
         <input type="submit" value="Enviar" class="btn btn-block btn-info">
 
+        <!-- routerLink="/blog" -->
+
     </form>
-    <!-- <select class="custom-select">
-        <option selected>Categoria</option>
-        <option value="1">Noticias</option>
-        <option value="2">Articulos</option>
-        <option value="3">Opiniones</option>
-    </select> -->
 
 </div>
-
-<!-- {{ formulario.value | json }} -->
-
-
-<!-- Realizamos un formulario básico con clases de Bootstrap -->
-<!-- Necesitamos darle un evento al boton para accionar, por ello creamos el evento ngSubmit. Tiene que ser definido en el Ts -->
-<!-- Definir el formulario con FormGroup para: es necesario importarlo en app.module -->
-<!-- Como hemos hecho en la creacion de las rutas, hay que definir el objeto que en este caso lo llamamos formulario y ponerle como una accion de Angular, que en este caso utilizamos FormGroup y asi poder tambien poner validators, recordar que el template no sirve. -->
-<!-- me da error: 'importar No provider for ControlContainerng
-Can't bind to 'formGroup' since it isn't a known property of 'form''' y es porque me falta:import ReactiveFormsModule from @angular/forms en APP.MODULE.TS -->
-<!-- Me seguia dando error, y aparte de importarlo en app.module tb en el ts del formulario, tendrá toda la logica pero no sé explicarlo -->
-<!-- creamos formcontrolName para poder utilizarlo en el ts, capturar el elemento html en el ts, se escribe en el input!!-->

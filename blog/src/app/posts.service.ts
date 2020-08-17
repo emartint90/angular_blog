@@ -8,6 +8,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 export class PostsService {
 
   arrayPosts: Post[];
+  arrayCategorias: string[];
   //formulario: FormularioComponent;
 
   constructor() {
@@ -26,7 +27,7 @@ export class PostsService {
         'Greenpeace España',
         'https://es.greenpeace.org/es/wp-content/uploads/sites/3/2020/07/Eunice-Foote-700x875real.jpg',
         new Date("2020-07-31"),
-        'Ciencias'
+        'Ciencia'
       ),
       new Post(
         'Día Mundial del Sol: ha llegado la hora del autoconsumo',
@@ -34,8 +35,16 @@ export class PostsService {
         'Maria Prado',
         'https://es.greenpeace.org/es/wp-content/uploads/sites/3/2020/06/GPES20030101AE05-1200x780.jpg',
         new Date("2020-06-21"),
-        'Emergencia Climatica'
+        'Emergencia Climática'
       ),
+    ];
+
+    this.arrayCategorias = [
+      'Noticias',
+      'Ciencia',
+      'Emergencia Climática',
+      'Artículos'
+
     ];
 
 
@@ -52,8 +61,10 @@ export class PostsService {
     //console.log(arrayPosts);
   }
 
-  getAllPosts(): Post[] {
-    return this.arrayPosts;
+  getAllPosts(): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrayPosts);
+    });
 
   }
 
@@ -69,8 +80,10 @@ export class PostsService {
 
   }
 
-}
+  getAllCategorias(): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrayCategorias);
+    });
+  }
 
-// 1) importamos el modelo post.
-//2) creamos un array para recibir los posts: definido encima del constructor y en el constructor inicializamos el array con datos.
-// 3)para quitar lineas rojas y comporbar si nos llega el post, tenemos que importar el service en el ts root inicializarlo en el constructor
+}

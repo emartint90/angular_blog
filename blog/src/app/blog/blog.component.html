@@ -1,43 +1,22 @@
 <div class="card-group">
 
-    <div class="card">
-        <img [src]="imagen" class="card-img-top">
+    <div class="card" *ngFor="let post of posts">
+        <img [src]="post.imagen" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title" {{titulo}}></h5>
-            <p class="card-text" {{texto}}>Texto</p>
-            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
-            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
+            <h5 class="card-title">{{post.titulo}}</h5>
+            <p class="card-text">{{post.texto}}</p>
+            <p class="card-text"><small class="text-muted">{{post.autor}}</small></p>
+            <p class="card-text"><small class="text-muted">{{post.categoria}}</small></p>
         </div>
     </div>
 
+</div>
 
-    <div class="card">
-        <img [src]="posts.imagen" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title" {{titulo}}></h5>
-            <p class="card-text" {{texto}}>Texto</p>
-            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
-            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
-        </div>
-    </div>
-
-    <div class="card">
-        <img [src]="imagen" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title" {{titulo}}></h5>
-            <p class="card-text" {{texto}}>Texto</p>
-            <p class="card-text"><small class="text-muted" {{autor}}>Autor:</small></p>
-            <p class="card-text"><small class="text-muted" {{categoria}}>Categoría:</small></p>
-        </div>
-    </div>
-
-    <div class="filtrar">
-        <select>
-            <option value="todos">Todos</option>
-            <option *ngFor="let categoria of getByCategoria()" [value]="categoria">
-                {{categoria}}
-            </option>
-        </select>
-    </div>
-
-    <!-- (change)="onChange($event)" -->
+<div class="form-group">
+    <label class="control-label">Filtrar por Categoría</label>
+    <select class="form-control" (change)="onChange($event)">
+        <option value="sinFiltro">Sin filtrar</option>
+        <option value="{{categoria}}" *ngFor="let categoria of arrayCategorias">
+            {{categoria}}</option>
+    </select>
+</div>

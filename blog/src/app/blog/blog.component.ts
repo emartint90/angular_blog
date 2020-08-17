@@ -10,13 +10,36 @@ import { Post } from '../models/post.model';
 export class BlogComponent implements OnInit {
 
   posts: Post[];
-  arraycategorias: string;
+  //arrayPosts: Post[];
+  arrayCategorias: string[];
 
   constructor(private postService: PostsService) {
 
   }
 
   ngOnInit(): void {
+    this.postService.getAllPosts()
+      .then(arrayPosts => {
+        this.posts = arrayPosts;
+      }).catch(err => console.log(err));
+
+    this.arrayCategorias = this.postService.arrayCategorias;
   }
 
+  async onChange($event) {
+    try {
+      const value = $event.target.value;
+      console.log(value);
+      let arrayPosts = this.posts;
+      if (value === "sinFiltro") {
+        arrayPosts = await this.postService.getAllPosts();
+      } else {
+        arrayPosts = await this.postService.getByCategoria(value);
+      }
+      this.posts = arrayPosts;
+    }
+    catch (err) {
+      return console.log(err);
+    };
+  }
 }

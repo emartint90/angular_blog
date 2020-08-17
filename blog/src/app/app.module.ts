@@ -6,14 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { NotWorkingComponent } from './not-working/not-working.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BlogComponent,
     FormularioComponent,
-    NotWorkingComponent
+
   ],
   imports: [
     BrowserModule,
@@ -26,4 +26,4 @@ import { NotWorkingComponent } from './not-working/not-working.component';
 })
 export class AppModule { }
 
-// hemos importado FormsModule para el formulario y tb ReactiveFormsModule
+

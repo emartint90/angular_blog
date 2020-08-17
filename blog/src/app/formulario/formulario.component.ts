@@ -11,20 +11,25 @@ import { Post } from '../models/post.model';
 export class FormularioComponent implements OnInit {
 
   formulario: FormGroup;
+  arrayCategorias: string[];
 
   constructor(private postService: PostsService) {
     this.formulario = new FormGroup({
       titulo: new FormControl('', [
         Validators.required,
+        Validators.minLength(4)
       ]),
       texto: new FormControl('', [
         Validators.required,
+        Validators.maxLength(1000)
       ]),
       autor: new FormControl('', [
         Validators.required,
+        Validators.minLength(4)
       ]),
       imagen: new FormControl('', [
         Validators.required,
+        Validators.minLength(4)
       ]),
       fecha: new FormControl('', [
         Validators.required,
@@ -36,6 +41,15 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.postService.getAllCategorias()
+    //   .then(arrayCat => {
+    //     this.arrayCategorias = arrayCat;
+    //     console.log(arrayCat);
+
+    //   }).catch(err => console.log(err));
+
+
+    this.arrayCategorias = this.postService.arrayCategorias;
   }
 
   onSubmit() {
@@ -49,6 +63,7 @@ export class FormularioComponent implements OnInit {
       this.formulario.value['fecha'],
       this.formulario.value['categoria']
     ));
+
 
     //console.log(this.formulario.value['titulo']);
   }
